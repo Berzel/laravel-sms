@@ -1,0 +1,13 @@
+{
+    "name": "berzel/laravel-sms",
+    "description": "Expressive and fluent unified API for sending SMS with laravel",
+    "type": "library",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Berzel Best",
+            "email": "berzel.best@gmail.com"
+        }
+    ],
+    "require": {}
+}
