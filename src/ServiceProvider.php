@@ -13,6 +13,8 @@ class ServiceProvider extends BaseServiceProvider {
      */
     public function register()
     {
+        $this->mergeConfigFrom(__DIR__.'/../config/sms.php', 'sms');
+        
         $this->app->bind(SmsService::class, function ($app) {
             return SmsDriverFactory::make($driver = config('sms.default'));
         });
