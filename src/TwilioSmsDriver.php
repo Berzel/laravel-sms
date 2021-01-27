@@ -4,7 +4,7 @@ namespace Berzel\LaravelSms;
 
 use Twilio\Rest\Client;
 
-class TwilioSmsService extends SmsService {
+class TwilioSmsDriver extends SmsService {
 
     /**
      * Send the message through the wire
@@ -13,14 +13,12 @@ class TwilioSmsService extends SmsService {
      */
     protected function doSend()
     {
-        $sid = 'ACebdf4b6422fef133ab2176c74b5543be';
-        $token = '94cdb92fb69c9ef12027342a38b4e17f';
+        $sid = config('sms.drivers.twilio.sid');
+        $token = config('sms.drivers.twilio.token');
         $client = new Client($sid, $token);
 
-        $client->messages->create(
-            $this->recepient,
-            [
-                'from' => 'Pygon',
+        $client->messages->create($this->to, [
+                'from' => config('sms.drivers.twilio.from'),
                 'body' => $this->body
             ]
         );

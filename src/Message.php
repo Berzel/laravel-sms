@@ -11,7 +11,7 @@ abstract class Message {
      *
      * @var string
      */
-    public $recepient;
+    public $to;
 
 
     /**
@@ -40,7 +40,7 @@ abstract class Message {
      */
     protected function to($user)
     {
-        $this->recepient = $user->phone;
+        $this->to = $user->phone;
         return $this;
     }
 

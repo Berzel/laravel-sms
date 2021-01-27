@@ -14,7 +14,7 @@ class ServiceProvider extends BaseServiceProvider {
     public function register()
     {
         $this->app->bind(SmsService::class, function ($app) {
-            return new TwilioSmsService();
+            return SmsDriverFactory::make($driver = config('sms.default'));
         });
     }
 }

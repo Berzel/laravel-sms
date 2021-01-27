@@ -9,7 +9,7 @@ abstract class SmsService {
      *
      * @var string
      */
-    protected $recepient;
+    protected $to;
 
     /**
      * The text message
@@ -26,7 +26,7 @@ abstract class SmsService {
      */
     public function to($user)
     {
-        $this->recepient = $user->phone;
+        $this->to = $user->phone;
         return $this;
     }
 
@@ -38,7 +38,8 @@ abstract class SmsService {
      */
     public function send(Message $message)
     {
-        $this->receipient = $message->recepient ?? $this->recepient;
+        $message = $message->build();
+        $this->to = $message->to ?? $this->to;
         $this->body = $message->body;
         $this->doSend();
     }
